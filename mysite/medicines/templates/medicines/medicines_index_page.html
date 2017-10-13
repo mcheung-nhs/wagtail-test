@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-medicinesindexpage{% endblock %}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+
+    <div class="intro">{{ page.intro|richtext }}</div>
+
+    <ul>
+    {% for medicine in page.get_children %}
+        <li><a href="{% pageurl medicine %}">{{ medicine.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
